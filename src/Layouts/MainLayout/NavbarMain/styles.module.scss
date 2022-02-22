@@ -1,0 +1,51 @@
+@import "/src/assets/styles/variables";
+
+.navbar {
+  width: 100%;
+  top: 0;
+  position: sticky;
+  z-index: 99999;
+  min-height: 12vh;
+  background-color: $backgroundColorWithe;
+  box-shadow: 0px 7px 11px -6px rgba(145, 145, 145, 0.4);
+  transition: 0.4s;
+  ul {
+    width: 100%;
+    margin-bottom: 0;
+    min-height: 12vh;
+    display: flex;
+    list-style: none;
+    justify-content: space-between;
+    align-items: center;
+    transition: 0.4s;
+    li {
+      padding: 20px;
+      a {
+        text-decoration: none;
+        color: $lightBrown;
+        text-transform: uppercase;
+        &:hover {
+          color: $darkOrange;
+        }
+      }
+      img {
+        width: 120px;
+        height: 30px;
+        object-fit: contain;
+        transition: 0.4s;
+        &:hover {
+          width: 125px;
+          height: 35px;
+          margin-left: -3px;
+        }
+      }
+    }
+  }
+}
+
+.increaseNavbar {
+  min-height: 10vh;
+  ul {
+    min-height: 8vh;
+  }
+}

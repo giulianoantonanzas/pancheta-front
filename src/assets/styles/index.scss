@@ -1,0 +1,52 @@
+@import "/src/assets/styles/variables";
+@import "./../../../node_modules/bootstrap/scss/bootstrap.scss";
+
+@font-face {
+  font-family: $fontDreaming;
+  font-style: normal;
+  font-weight: 400;
+  src: local($fontDreaming), local($fontDreaming),
+    url("./../fonts/My Creative Land - Dreaming Outloud Regular.otf")
+      format("truetype");
+}
+
+@font-face {
+  font-family: $fontAristotelicaExtraLight;
+  font-style: normal;
+  font-weight: 100;
+  src: local($fontAristotelicaExtraLight), local($fontAristotelicaExtraLight),
+    url("./../fonts/aristotelica-pro-text-extralight.otf") format("truetype");
+}
+
+body {
+  overflow: hidden;
+}
+
+.pointer {
+  cursor: pointer;
+}
+
+p {
+  margin: 0;
+  padding: 0;
+}
+
+h1 {
+  z-index: 3;
+  font-family: $fontDreaming;
+  font-size: 48px;
+}
+
+h2 {
+  z-index: 3;
+  font-family: $fontAristotelicaExtraLight;
+}
+
+h4 {
+  z-index: 2;
+  font-family: $fontAristotelicaExtraLight;
+}
+
+.icon-withe {
+  filter: invert(1);
+}

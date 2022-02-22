@@ -1,0 +1,35 @@
+.imagePreview {
+  position: relative;
+  cursor: pointer;
+  & p {
+    position: absolute;
+    top: 50%;
+    left: 70px;
+    visibility: hidden;
+  }
+  & img {
+    position: relative;
+    width: 240px;
+    height: 240px;
+    object-fit: contain;
+    z-index: 0;
+  }
+  &:hover {
+    &::before {
+      content: "";
+
+      width: 240px;
+      height: 240px;
+      position: absolute;
+      z-index: 1;
+      background-color: rgba($color: #ffff, $alpha: 0.5);
+    }
+    & p {
+      position: absolute;
+      z-index: 3;
+      top: 50%;
+      left: 70px;
+      visibility: visible;
+    }
+  }
+}

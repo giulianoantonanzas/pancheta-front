@@ -1,0 +1,34 @@
+@import "/src/assets/styles/variables";
+
+.heroContainer {
+  width: 100%;
+  height: 90vh;
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  background-image: url("../../../assets/images/wallpaperImagen.png");
+  background-position: 90%;
+  background-size: contain;
+  background-repeat: no-repeat;
+  color: $textLight;
+  z-index: 1;
+  position: relative;
+
+  & img {
+    z-index: 1;
+    width: 44px;
+    height: 44px;
+    animation: MoveLove 5s infinite;
+    @keyframes MoveLove {
+      50% {
+        transform: rotate(-10deg);
+      }
+    }
+  }
+  & a {
+    width: fit-content;
+  }
+  & button {
+    border-radius: 12px;
+  }
+}

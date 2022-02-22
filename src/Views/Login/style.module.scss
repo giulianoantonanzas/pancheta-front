@@ -1,0 +1,33 @@
+@import "/src/assets/styles/variables";
+
+.loginContainer {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba($color: #000000, $alpha: 1);
+  background: linear-gradient(
+    0deg,
+    rgba(255, 255, 255, 0.2945553221288515) 0%,
+    rgba(239, 107, 82, 0.7315301120448179) 44%,
+    rgba(219, 153, 93, 1) 100%
+  );
+}
+
+.formContainer {
+  background-color: $backgroundColorWithe;
+}
+
+.inputContainer {
+  display: flex;
+  gap: 7%;
+  justify-content: space-between;
+  & label {
+    width: 250px;
+  }
+  & input {
+    max-height: 38px;
+  }
+}
