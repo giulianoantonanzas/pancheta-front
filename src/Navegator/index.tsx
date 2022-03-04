@@ -26,6 +26,7 @@ const Navegator: FC = () => (
         <Route path='' element={<ProductAdmin />} />
         <Route path='products' element={<ProductAdmin />} />
         <Route path='products/new' element={<NewProduct />} />
+        <Route path='products/:id' element={<NewProduct />} />
       </Route>
     </Routes>
   </BrowserRouter>

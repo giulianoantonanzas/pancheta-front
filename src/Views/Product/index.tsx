@@ -1,5 +1,5 @@
 import Carrousel from "../../Components/Carrousel";
-import useProduct from "./useProduct";
+import useProduct from "../../hooks/useProduct";
 
 const Product = () => {
   const { product } = useProduct();

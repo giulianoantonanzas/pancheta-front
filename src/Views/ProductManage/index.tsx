@@ -2,6 +2,8 @@ import { useRef } from "react";
 import useReducerProduct from "./useReducerProduct";
 import Style from "./style.module.scss";
 import useSubmitForm from "./useSubmitForm";
+import { API_URL_FILE } from "../../constants";
+import { Link } from "react-router-dom";
 
 const NewProduct = () => {
   const {
@@ -11,17 +13,22 @@ const NewProduct = () => {
     handleChangePrice,
     handleChangeStock,
     handleChangeImage,
-    handleRmoveImage
+    handleRmoveImage,
+    handleRemoveSavedImage,
+    productEditId
   } = useReducerProduct();
   const inputImage = useRef<HTMLInputElement>(null);
   const submitForm = useSubmitForm();
 
   return (
     <div className='container mt-4'>
+      <h2 className='mb-2'>
+        {productEditId ? "Editar producto" : "Crear producto"}
+      </h2>
       <form
         onSubmit={e => {
           e.preventDefault();
-          submitForm(productForm);
+          submitForm(productForm, productEditId);
         }}
         className='border p-4'>
         <div className='d-flex gap-4'>
@@ -108,6 +115,15 @@ const NewProduct = () => {
           </div>
 
           <div className='d-flex gap-4 flex-wrap mt-4'>
+            {productForm?.ProductImages?.map((image, index) => (
+              <div
+                key={index}
+                className={`${Style.imagePreview}`}
+                onClick={() => handleRemoveSavedImage(index)}>
+                <img src={API_URL_FILE + image.path} alt='demo view' />
+                <p>Quitar imagen</p>
+              </div>
+            ))}
             {productForm?.files?.map((image, index) => (
               <div
                 key={index}
@@ -120,11 +136,15 @@ const NewProduct = () => {
           </div>
         </div>
 
-        <button
-          type='submit'
-          className='btn btn-primary text-white p-4 py-2 mt-5 ms-auto d-flex'>
-          Crear producto
-        </button>
+        <div className='d-flex py-2 mt-5 gap-2 justify-content-end'>
+          <button type='submit' className='btn btn-primary text-white p-2'>
+            {productEditId ? "Guardar cambios" : "Crear producto"}
+          </button>
+
+          <Link to='/admin'>
+            <button className='btn btn-outline-primary p-2'>Volver</button>
+          </Link>
+        </div>
       </form>
     </div>
   );

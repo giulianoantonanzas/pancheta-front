@@ -1,14 +1,14 @@
 import { useMemo, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import useApiGet from "../../hooks/useApiGet";
-import { Product } from "../../types/Product";
+import useApiGet from "./useApiGet";
+import { Product } from "../types/Product";
 
 /**
  * @author Giuliano Antonanzas
  * @description este hook sirve para retornar los productos segun el id de la ruta.
  * @example const {product} = useProduct()
  */
-const useProduct = () => {
+const useProduct = (redirect?: boolean) => {
   const { id } = useParams<{ id: string }>();
   const [product, setProduct] = useState<Product>();
   const apiGet = useApiGet();
@@ -19,7 +19,7 @@ const useProduct = () => {
       const response = await apiGet<Product | null>("/products", `/${id}`);
       if (response) {
         setProduct(response);
-      } else {
+      } else if (redirect) {
         navigate("");
       }
     }

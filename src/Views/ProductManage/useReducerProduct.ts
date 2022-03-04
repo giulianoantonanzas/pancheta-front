@@ -1,12 +1,17 @@
-import { useReducer } from "react";
+import { useEffect, useMemo, useReducer } from "react";
 import reducerProduct from "./reducerProduct";
+import useInitialiceValues from "./useInitialiceValues";
 
 const useReducerProduct = () => {
-  const [productForm, dispatch] = useReducer(reducerProduct, {
-    name: "",
-    description: "",
-    stock: 0
-  });
+  const { initialProduct, productEditId } = useInitialiceValues();
+  const [productForm, dispatch] = useReducer(reducerProduct, initialProduct);
+
+  useEffect(() => {
+    //inicialiso el productForm si es que esta editando ,para ello reviso si tengo algo en initial product
+    if (productEditId) {
+      dispatch({ type: "allProduct", payload: initialProduct });
+    }
+  }, [initialProduct]);
 
   const handleChangeName = (e: React.ChangeEvent<HTMLInputElement>) => {
     dispatch({ type: "name", payload: e.target.value });
@@ -37,15 +42,26 @@ const useReducerProduct = () => {
     dispatch({ type: "files", payload: productFormImages });
   };
 
-  return {
-    productForm,
-    handleChangeName,
-    handleChangeDescription,
-    handleChangeStock,
-    handleChangePrice,
-    handleChangeImage,
-    handleRmoveImage
+  const handleRemoveSavedImage = (index: number) => {
+    const productFormImages = productForm.ProductImages || [];
+    productFormImages.splice(index, 1);
+    dispatch({ type: "ProductImages", payload: productFormImages });
   };
+
+  return useMemo(
+    () => ({
+      productForm,
+      handleChangeName,
+      handleChangeDescription,
+      handleChangeStock,
+      handleChangePrice,
+      handleChangeImage,
+      handleRmoveImage,
+      productEditId,
+      handleRemoveSavedImage
+    }),
+    [productForm, initialProduct]
+  );
 };
 
 export default useReducerProduct;

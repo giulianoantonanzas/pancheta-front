@@ -1,5 +1,5 @@
 export type Product = {
-  id?: number;
+  id: number;
   name: string;
   description?: string;
   price?: number;
@@ -23,4 +23,5 @@ export type ProductFormPost = {
   price?: number;
   stock?: number;
   files?: File[];
+  ProductImages?: ProductImages[];
 };

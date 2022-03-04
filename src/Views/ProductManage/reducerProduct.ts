@@ -1,11 +1,14 @@
-import { ProductFormPost } from "../../types/Product";
+import { ProductFormPost, ProductImages } from "../../types/Product";
 
 const reducerProduct = (
   productForm: ProductFormPost,
   {
     type,
     payload
-  }: { type: keyof ProductFormPost; payload: string | number | File[] }
+  }: {
+    type: keyof ProductFormPost | "allProduct";
+    payload: string | number | File[] | ProductImages[] | ProductFormPost;
+  }
 ) => {
   switch (type) {
     case "name":
@@ -34,10 +37,14 @@ const reducerProduct = (
         ...productForm,
         files: payload as File[]
       };
-    default:
+    case "ProductImages":
       return {
         ...productForm,
-        [type]: payload
+        ProductImages: payload as ProductImages[]
+      };
+    case "allProduct":
+      return {
+        ...(payload as ProductFormPost)
       };
   }
 };

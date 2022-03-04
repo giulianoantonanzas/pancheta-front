@@ -20,9 +20,12 @@ const ProductCard: FC<Product> = ({
       onClick={() => navigate(`${id}`)}
       className={Styles.productCardContainer}>
       {ProductImages && ProductImages?.length > 0 && (
-        <img src={API_URL_FILE + ProductImages[0].path} alt='demo producto' />
+        <img
+          src={API_URL_FILE + ProductImages[ProductImages.length - 1].path}
+          alt='demo producto'
+        />
       )}
-      <div id='info-product'>
+      <div>
         <h4>{name}</h4>
         <p>{description}</p>
         <div className='d-flex mt-auto justify-content-between'>

@@ -3,12 +3,12 @@ import addIcon from "../../assets/images/plus-circle.svg";
 import removeIcon from "../../assets/images/trash.svg";
 import editIcon from "../../assets/images/pencil.svg";
 import Style from "./style.module.scss";
-import { Link } from "react-router-dom";
-import useModal from "../../hooks/useModal";
-import RemoveProductModal from "./RemoveProductModal";
+import { Link, useNavigate } from "react-router-dom";
+import useRemoveProductModal from "./useRemoveProductModal";
 
 const ProductAdmin = () => {
   const productKeys = ["id", "Name", "Precio", "Stock", "Acciones"];
+  const navigate = useNavigate();
   const {
     products,
     paginate,
@@ -19,7 +19,7 @@ const ProductAdmin = () => {
     handleChangeFilter,
     removeProduct
   } = useProductList();
-  const { openModal } = useModal();
+  const { openRemoveProductModal } = useRemoveProductModal();
 
   return (
     <div className='w-100 border rounded p-4'>
@@ -59,22 +59,19 @@ const ProductAdmin = () => {
                   <td>{product.stock}</td>
                   <td className='d-flex gap-2'>
                     <img
+                      onClick={() => navigate(`products/${product.id}`)}
                       className='pointer'
                       src={editIcon}
                       alt='Editar producto'
                     />
                     <img
-                      onClick={async () =>
-                        product.id &&
-                        openModal(
-                          <RemoveProductModal
-                            product={product}
-                            onAccept={() =>
-                              product.id && removeProduct(product.id)
-                            }
-                          />
-                        )
-                      }
+                      onClick={async () => {
+                        if (product?.id) {
+                          openRemoveProductModal(product, () =>
+                            removeProduct(product.id as number)
+                          );
+                        }
+                      }}
                       className='pointer'
                       src={removeIcon}
                       alt='Eliminar producto'
