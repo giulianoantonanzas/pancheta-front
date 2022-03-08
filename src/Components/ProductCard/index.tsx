@@ -2,18 +2,14 @@ import { FC } from "react";
 import { API_URL_FILE } from "../../constants";
 import { Product } from "../../types/Product";
 import Styles from "./style.module.scss";
-import CarritoIMG from "./../../assets/images/cart.svg";
 import { useNavigate } from "react-router-dom";
+import AddCart from "../AddCart";
+import useCartShopContext from "../../Context/CartShopContext";
 
-const ProductCard: FC<Product> = ({
-  id,
-  name,
-  description,
-  price,
-  stock,
-  ProductImages
-}) => {
+const ProductCard: FC<Product> = product => {
+  const { id, name, description, ProductImages, price } = product;
   const navigate = useNavigate();
+  const { handleAddProduct } = useCartShopContext();
 
   return (
     <div
@@ -28,15 +24,20 @@ const ProductCard: FC<Product> = ({
       <div>
         <h4>{name}</h4>
         <p>{description}</p>
-        <div className='d-flex mt-auto justify-content-between'>
+        <div className='d-flex mt-auto align-items-center justify-content-end justify-content-between'>
           <div className='mt-auto d-flex flex-column gap-0'>
-            <p>Precio: ${price} </p>
-            <p>Stock actual: {stock}</p>
+            {price && (
+              <h2 className='price'>
+                ${new Intl.NumberFormat("es-AR").format(price)}
+              </h2>
+            )}
           </div>
-
-          <div className={Styles.carritoIcon}>
-            <img src={CarritoIMG} alt='añadir producto' />
-          </div>
+          <AddCart
+            onClick={e => {
+              e?.stopPropagation();
+              handleAddProduct(product);
+            }}
+          />
         </div>
       </div>
     </div>

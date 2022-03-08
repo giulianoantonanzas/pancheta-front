@@ -31,29 +31,10 @@
       height: 100%;
       transition: 0.2s;
       opacity: 0;
-    }
-  }
-}
-
-.carritoIcon {
-  background-color: rgba($color: $brown, $alpha: 0.9);
-  display: flex;
-  margin-top: auto;
-  padding: 8px;
-  border-radius: 50%;
-  transition: 0.4s;
-  & img {
-    width: 24px;
-    height: 24px;
-    filter: invert(1);
-  }
-  &:hover {
-    margin-right: -2px;
-    margin-bottom: -2px;
-    padding: 10px;
-    & img {
-      width: 26px;
-      height: 26px;
+      & p {
+        overflow: auto;
+        max-height: 150px;
+      }
     }
   }
 }

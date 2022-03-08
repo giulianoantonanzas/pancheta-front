@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import Style from "./styles.module.scss";
 import PanchetaLogo from "./../../../assets/images/Pancheta logo texto.png";
 import usePositionPage from "../../../Context/usePositionPage";
+import Cart from "../../../Components/Cart";
 
 const NavbarMain = () => {
   const { position } = usePositionPage();
@@ -22,7 +23,9 @@ const NavbarMain = () => {
         </li>
 
         <li></li>
-        <li></li>
+        <li>
+          <Cart />
+        </li>
       </ul>
     </nav>
   );

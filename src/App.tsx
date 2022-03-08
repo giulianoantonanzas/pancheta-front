@@ -3,14 +3,17 @@ import Navegator from "./Navegator";
 import "./assets/styles/index.scss";
 import { UserContextProider } from "./Context/LoginContext/useLoginContext";
 import { PromptProvider } from "./Context/PromptContext/usePromptContext";
+import { CardShopContextProider } from "./Context/CartShopContext";
 
 const App = () => {
   return (
     <PromptProvider>
       <PositionProvider>
-        <UserContextProider>
-          <Navegator />
-        </UserContextProider>
+        <CardShopContextProider>
+          <UserContextProider>
+            <Navegator />
+          </UserContextProider>
+        </CardShopContextProider>
       </PositionProvider>
     </PromptProvider>
   );

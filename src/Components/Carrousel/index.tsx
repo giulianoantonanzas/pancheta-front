@@ -8,13 +8,11 @@ const Carrousel: FC<{ images: ProductImages[] }> = ({ images }) => {
 
   return (
     <div className={Style.imageContainer}>
-      <div>
-        <img
-          className={Style.selected}
-          src={API_URL_FILE + images[selected].path}
-          alt='demo'
-        />
-      </div>
+      <img
+        className={Style.selected}
+        src={API_URL_FILE + images[selected].path}
+        alt='demo'
+      />
 
       <div className={Style.carrouseLContainer}>
         {images.map((image, index) => (
