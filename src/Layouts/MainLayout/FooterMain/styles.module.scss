@@ -7,6 +7,11 @@
   & a {
     color: unset;
     width: fit-content;
+    &:hover {
+      transition: 0.4s;
+      filter: brightness(0) saturate(100%) invert(45%) sepia(23%) saturate(580%)
+        hue-rotate(15deg) brightness(95%) contrast(93%);
+    }
   }
   & p {
     margin: 0;

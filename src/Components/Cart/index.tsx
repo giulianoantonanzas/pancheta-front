@@ -4,10 +4,12 @@ import Style from "./style.module.scss";
 import useCart from "./useCart";
 import CartItem from "./CartItem";
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 const Cart = () => {
   const { products } = useCartShopContext();
-  const { handleSwitchOpen, collapsableStyle, calculeTotalPrice } = useCart();
+  const { handleSwitchOpen, collapsableStyle, calculeTotalPrice, hasOpenCart } =
+    useCart();
   const [moveCount, setMoveCount] = useState(false);
 
   useEffect(() => {
@@ -18,7 +20,7 @@ const Cart = () => {
   }, [products]);
 
   return (
-    <>
+    <div>
       <div className={Style.cartContainer}>
         <AddCart onClick={handleSwitchOpen}>
           <div
@@ -45,17 +47,20 @@ const Cart = () => {
                     calculeTotalPrice(products)
                   )}
                 </h2>
-                <button className='btn btn-outline-primary'>
-                  Realizar compra
-                </button>
+                <Link onClick={handleSwitchOpen} to={"payment"}>
+                  <button className='btn btn-outline-primary'>
+                    Realizar compra
+                  </button>
+                </Link>
               </div>
             </>
           ) : (
-            <p>Aquí verás los productos del carrito.</p>
+            <p className='p-4'>Aquí verás los productos del carrito.</p>
           )}
         </div>
       </div>
-    </>
+      {hasOpenCart && <div className='back-modal' onClick={handleSwitchOpen} />}
+    </div>
   );
 };
 

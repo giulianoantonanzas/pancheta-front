@@ -1,21 +1,33 @@
 import Style from "./styles.module.scss";
-import instagramIcon from "./../../../assets/images/instagram.svg";
+import instagramIcon from "assets/images/instagram.svg";
+import whatsAppIcon from "assets/images/whatsapp.svg";
 
 const FooterMain = () => {
   return (
     <footer className={Style.footer}>
-      <div className='container py-4'>
-        <h4 className='m-0'>Contactos</h4>
-        <a
-          className='d-flex gap-1'
-          target={"_blank"}
-          rel='noreferrer'
-          href={"https://www.instagram.com/pancheta.mc/"}>
-          <img width={24} height={24} src={instagramIcon} alt='instagram' />
-          <p>pancheta.mc</p>
-        </a>
+      <div className='container pt-4 pb-2'>
+        <h4 className='text-center'>
+          <u>Contactos</u>
+        </h4>
+        <div className='d-flex justify-content-center align-items-center gap-4'>
+          <a
+            target={"_blank"}
+            rel='noreferrer'
+            href={"https://www.instagram.com/pancheta.mc/"}>
+            <img width={34} height={34} src={instagramIcon} alt='instagram' />
+          </a>
+          <a
+            target={"_blank"}
+            rel='noreferrer'
+            href={
+              "https://web.whatsapp.com/send?phone=+5493424520402&text&app_absent=0"
+            }>
+            <img width={34} height={34} src={whatsAppIcon} alt='whatsApp' />
+          </a>
+        </div>
         <p className='mt-4 text-center'>
-          Copyright © 2022 Giuliano Antonanzas. Todos los derechos reservados
+          Copyright © {`${new Date().getFullYear()}`} Pancheta - Pagina
+          realizada por Giuliano Antonanzas. Todos los derechos reservados
         </p>
       </div>
     </footer>

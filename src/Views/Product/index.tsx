@@ -1,6 +1,6 @@
-import Carrousel from "../../Components/Carrousel";
-import useCartShopContext from "../../Context/CartShopContext";
-import useProduct from "../../hooks/useProduct";
+import Carrousel from "Components/Carrousel";
+import useCartShopContext from "Context/CartShopContext";
+import useProduct from "hooks/useProduct";
 import Style from "./style.module.scss";
 
 const Product = () => {
@@ -12,12 +12,12 @@ const Product = () => {
     <div className='py-5 container'>
       {product && (
         <div className={Style.productContainer}>
-          <div className='px-5'>
+          <div>
             {product.ProductImages && (
               <Carrousel images={product.ProductImages} />
             )}
           </div>
-          <div className='w-50 h-100'>
+          <div className={Style.productDetails}>
             <h2>{product.name}</h2>
             <p>{product?.description}</p>
             <div className='mt-5'>

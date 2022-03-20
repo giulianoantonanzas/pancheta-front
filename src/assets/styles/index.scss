@@ -1,4 +1,5 @@
 @import "/src/assets/styles/variables";
+@import "/src/assets/styles/mixin";
 @import "./../../../node_modules/bootstrap/scss/bootstrap.scss";
 
 @font-face {
@@ -67,4 +68,20 @@ h4 {
   font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue",
     Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji",
     "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  @include style-for(mobile) {
+    font-size: 2rem;
+  }
+}
+
+button {
+  transition: 0.4s !important;
+}
+
+.back-modal {
+  left: 0;
+  top: 0;
+  position: absolute;
+  z-index: 8;
+  width: 100%;
+  height: 100vh;
 }

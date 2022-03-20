@@ -9,10 +9,13 @@ const useApiPost = () => {
     body?:
       | FormData
       | string[]
-      | Record<string, number | string | string[] | boolean | File | FormData>,
+      | Record<
+          string,
+          number | string | string[] | boolean | File | FormData | object
+        >,
     params = "",
     method: "POST" | "PUT" | "DELETE" = "POST"
-  ): Promise<T | string> {
+  ): Promise<T | null> {
     const token = user?.token || null;
     const isFormData = typeof (body as FormData)?.append === "function";
 
@@ -34,13 +37,14 @@ const useApiPost = () => {
       ).json();
     } catch (error) {
       console.error(error);
-      return error as string;
+      return null;
     }
   };
 };
 
 export type PostEndpoint =
   | "/products"
+  | "/payment"
   | "/register"
   | "/login"
   | "/image-product";

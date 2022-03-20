@@ -1,14 +1,12 @@
-import AboutMeIMG from "../../assets/images/wallpaperImagenOPT2.jpg";
+import AboutMeIMG from "assets/images/wallpaperImagenOPT2.jpg";
 import Style from "./style.module.scss";
 
 const About = () => {
   return (
-    <div className={`container d-flex ${Style.aboutCointainer}`}>
-      <div className='w-50'>
-        <img src={AboutMeIMG} width='80%' alt='acerca de mi' />
-      </div>
-      <div className='w-50 d-flex flex-column gap-3'>
-        <h2 className='my-5'>
+    <div className={`container ${Style.aboutCointainer}`}>
+      <img src={AboutMeIMG} alt='acerca de mi' />
+      <div className={Style.description}>
+        <h2>
           Soy Marlén. Diseñadora y creadora del mundo mágico de Pancheta.{" "}
         </h2>
         <p>

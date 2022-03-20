@@ -19,11 +19,12 @@
     align-items: center;
     transition: 0.4s;
     li {
-      padding: 20px;
+      padding: 10px;
       a {
         text-decoration: none;
         color: $lightBrown;
         text-transform: uppercase;
+        transition: 0.4s;
         &:hover {
           color: $darkOrange;
         }

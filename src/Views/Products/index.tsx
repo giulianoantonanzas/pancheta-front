@@ -1,5 +1,6 @@
-import ProductCard from "../../Components/ProductCard";
+import ProductCard from "Components/ProductCard";
 import useProduct from "./useProducts";
+import Style from "./style.module.scss";
 
 const Products = () => {
   const { featchMore, products, handleChangeFilter, handleFilter, filter } =
@@ -26,7 +27,7 @@ const Products = () => {
         </button>
       </div>
 
-      <div className='d-flex flex-wrap gap-3 my-5'>
+      <div className={Style.productList}>
         {products?.map(product => (
           <ProductCard {...product} key={product.id} />
         ))}

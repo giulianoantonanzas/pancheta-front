@@ -21,24 +21,22 @@ const CartItem: FC<CartItemProps> = ({ product }) => {
       {product.ProductImages && (
         <img src={API_URL_FILE + product.ProductImages[0].path} />
       )}
-      <div>
+      <div className='d-flex w-100 flex-column'>
         <p>
           <strong>{product.name}</strong>
         </p>
-        <div className='d-flex align-items-center justify-content-between gap-2 w-100'>
-          {product?.price && (
-            <h2>${new Intl.NumberFormat("es-AR").format(product.price)}</h2>
-          )}
-          <RoundedIcon
-            medium
-            onClick={e => {
-              e?.stopPropagation();
-              handleRemoveProduct(product);
-            }}>
-            <img src={TrashIcon} alt='remove' />
-          </RoundedIcon>
-        </div>
+        {product?.price && (
+          <h2>${new Intl.NumberFormat("es-AR").format(product.price)}</h2>
+        )}
       </div>
+      <RoundedIcon
+        medium
+        onClick={e => {
+          e?.stopPropagation();
+          handleRemoveProduct(product);
+        }}>
+        <img src={TrashIcon} alt='remove' />
+      </RoundedIcon>
     </div>
   );
 };

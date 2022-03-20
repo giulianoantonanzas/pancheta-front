@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Product } from "../../types/Product";
 
 export type CartShopContextType = {
@@ -20,14 +20,21 @@ export const CartShopContext = React.createContext<CartShopContextType>({
 });
 
 export const CardShopContextProider: React.FC = ({ children }) => {
-  const [products, setProdutos] = useState<Product[]>([]);
+  const [products, setProdutos] = useState<Product[]>(
+    (JSON.parse(
+      localStorage.getItem("products-pancheta") || "[]"
+    ) as Product[]) || []
+  );
+
+  useEffect(() => {
+    localStorage.setItem("products-pancheta", JSON.stringify(products));
+  }, [products]);
 
   const handleAddProduct = (product: Product) => {
     if (!products.find(productoCurrent => productoCurrent.id === product.id)) {
       setProdutos(prev => [...prev, product]);
     }
   };
-
   const handleRemoveProduct = (product: Product) => {
     if (products.find(productoCurrent => productoCurrent.id === product.id)) {
       setProdutos(prev =>

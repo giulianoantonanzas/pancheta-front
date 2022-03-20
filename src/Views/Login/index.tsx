@@ -1,5 +1,5 @@
 import { Navigate } from "react-router-dom";
-import useUser from "../../Context/LoginContext/useLoginContext";
+import useUser from "Context/LoginContext/useLoginContext";
 import Style from "./style.module.scss";
 import useLogin from "./useLogin";
 

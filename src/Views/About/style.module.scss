@@ -1,4 +1,28 @@
+@import "/src/assets/styles/mixin";
+
 .aboutCointainer {
   height: 89vh;
   padding: 5%;
+  display: flex;
+  gap: 3%;
+  & img {
+    width: 47%;
+    @include style-for(mobile) {
+      width: 100%;
+    }
+  }
+  @include style-for(mobile) {
+    display: block;
+    height: fit-content;
+  }
+}
+
+.description {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+  @include style-for(mobile) {
+    width: 100%;
+  }
 }

@@ -1,7 +1,7 @@
 import { useCallback, useMemo, useState } from "react";
-import useApiGet from "../../hooks/useApiGet";
-import { Paginate } from "../../types/Paginate";
-import { Product } from "../../types/Product";
+import useApiGet from "hooks/useApiGet";
+import { Paginate } from "types/Paginate";
+import { Product } from "types/Product";
 
 const useProduct = () => {
   const [products, setProducts] = useState<Product[]>();

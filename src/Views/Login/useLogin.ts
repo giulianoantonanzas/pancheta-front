@@ -11,14 +11,12 @@ const useLogin = () => {
   const submitForm = useCallback(
     async (username?: string, password?: string) => {
       if (username && password) {
-        const user = await apiPost<User>("/login", {
+        const user = (await apiPost<User>("/login", {
           username,
           password
-        });
-        if (typeof user !== "string" && user.token) {
-          setUser(user);
-          localStorage.setItem("panchetaToken", user?.token);
-        }
+        })) as User;
+        setUser(user);
+        user.token && localStorage.setItem("panchetaToken", user?.token);
       }
     },
     [formData]

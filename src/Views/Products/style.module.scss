@@ -1,0 +1,9 @@
+@import "/src/assets/styles/mixin";
+
+.productList {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin: 2rem 0px;
+}

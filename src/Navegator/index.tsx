@@ -9,6 +9,7 @@ import ProductAdmin from "../Views/ProductAdmin";
 import NewProduct from "../Views/ProductManage";
 import Products from "../Views/Products";
 import Product from "../Views/Product";
+import Payment from "../Views/Payment";
 
 const Navegator: FC = () => (
   <BrowserRouter>
@@ -19,6 +20,7 @@ const Navegator: FC = () => (
         <Route path='' element={<Home />} />
         <Route path='productos' element={<Products />} />
         <Route path='productos/:id' element={<Product />} />
+        <Route path='payment' element={<Payment />} />
         <Route path='sobre-mi' element={<About />} />
       </Route>
 

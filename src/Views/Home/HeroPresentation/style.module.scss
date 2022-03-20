@@ -1,4 +1,5 @@
 @import "/src/assets/styles/variables";
+@import "/src/assets/styles/mixin";
 
 .heroContainer {
   width: 100%;
@@ -13,6 +14,15 @@
   color: $textLight;
   z-index: 1;
   position: relative;
+  @include style-for(mobile) {
+    & > div {
+      width: 60%;
+      margin-right: auto;
+      margin-left: 0;
+    }
+    background-size: 55%;
+    background-position: 100%;
+  }
 
   & img {
     z-index: 1;

@@ -6,7 +6,7 @@ import { Product, ProductFormPost } from "../../types/Product";
 const useSubmitForm = () => {
   const apiPost = useApiPost();
   const navigate = useNavigate();
-  let response: string | Product = "";
+  let response: Product | null = null;
 
   return useCallback(
     async (productForm: ProductFormPost, productEditId: number | null) => {
