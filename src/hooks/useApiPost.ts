@@ -1,3 +1,4 @@
+import { AnyObject } from "types/AnyObject";
 import { API_URL } from "../constants";
 import useUser from "../Context/LoginContext/useLoginContext";
 
@@ -6,13 +7,7 @@ const useApiPost = () => {
 
   return async function apiPost<T>(
     endpoint: PostEndpoint,
-    body?:
-      | FormData
-      | string[]
-      | Record<
-          string,
-          number | string | string[] | boolean | File | FormData | object
-        >,
+    body?: FormData | string[] | AnyObject,
     params = "",
     method: "POST" | "PUT" | "DELETE" = "POST"
   ): Promise<T | null> {
@@ -44,9 +39,10 @@ const useApiPost = () => {
 
 export type PostEndpoint =
   | "/products"
-  | "/payment"
+  | "/payments"
   | "/register"
   | "/login"
+  | "/instagram"
   | "/image-product";
 
 export default useApiPost;

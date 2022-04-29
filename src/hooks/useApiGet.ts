@@ -25,6 +25,10 @@ const useApiGet = () => {
     }
   };
 };
-export type GetEndpoint = "/products";
+export type GetEndpoint =
+  | "/products"
+  | "/payments"
+  | "/products/admin"
+  | "/instagram";
 
 export default useApiGet;

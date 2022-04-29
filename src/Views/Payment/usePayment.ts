@@ -7,28 +7,34 @@ import {
   initialCustomerData,
   costumerDataReducer
 } from "./costumerDataReducer";
+import useMercadoPago from "./useMercadoPago";
 
 const usePayment = () => {
   const { products } = useCartShopContext();
-  const ApiGet = useApiPost();
-
+  const apiGet = useApiPost();
   const [costumerData, dispatch] = useReducer(
     costumerDataReducer,
     initialCustomerData
   );
+  const { openCheckout } = useMercadoPago();
 
   const sendPay = useCallback(
     async (e: React.FormEvent<HTMLFormElement>) => {
       e.preventDefault();
-      const mercadoPagoShop = await ApiGet<MercadoPagoShopType>(
-        "/payment",
+      const mercadopagoShop = await apiGet<MercadoPagoShopType>(
+        "/payments",
         { products: products, userInfo: costumerData },
         "/generatePayment"
       );
 
-      if (mercadoPagoShop?.sandbox_init_point) {
-        window.open(mercadoPagoShop.sandbox_init_point);
+      if (mercadopagoShop) {
+        openCheckout(mercadopagoShop.id);
       }
+
+      // if (mercadoPagoShop?.init_point) {
+      //   window.open(mercadoPagoShop.init_point); //cambiar por init_point
+      // handleClearVlaue()
+      // }
     },
     [products, costumerData]
   );

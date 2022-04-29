@@ -13,14 +13,14 @@ const FooterMain = () => {
           <a
             target={"_blank"}
             rel='noreferrer'
-            href={"https://www.instagram.com/pancheta.mc/"}>
+            href={"https://www.instagram.com/_pancheta.mc/"}>
             <img width={34} height={34} src={instagramIcon} alt='instagram' />
           </a>
           <a
             target={"_blank"}
             rel='noreferrer'
             href={
-              "https://web.whatsapp.com/send?phone=+5493424520402&text&app_absent=0"
+              "https://web.whatsapp.com/send?phone=+5493425680382&text&app_absent=0"
             }>
             <img width={34} height={34} src={whatsAppIcon} alt='whatsApp' />
           </a>

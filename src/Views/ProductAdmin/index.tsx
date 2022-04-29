@@ -1,13 +1,11 @@
 import useProductList from "./useProductList";
-import addIcon from "../../assets/images/plus-circle.svg";
-import removeIcon from "../../assets/images/trash.svg";
-import editIcon from "../../assets/images/pencil.svg";
-import Style from "./style.module.scss";
+import addIcon from "assets/images/plus-circle.svg";
 import { Link, useNavigate } from "react-router-dom";
 import useRemoveProductModal from "./useRemoveProductModal";
+import TableAdmin from "Components/TableAdmin";
+import { Product } from "types/Product";
 
 const ProductAdmin = () => {
-  const productKeys = ["id", "Name", "Precio", "Stock", "Acciones"];
   const navigate = useNavigate();
   const {
     products,
@@ -40,55 +38,22 @@ const ProductAdmin = () => {
       </div>
       <div className='mt-5'>
         {products && products?.length > 0 && (
-          <table className={`table ${Style.tableContainer}`}>
-            <thead className='table-light'>
-              <tr>
-                {productKeys.map((key, index) => (
-                  <th key={index} scope='col'>
-                    {key}
-                  </th>
-                ))}
-              </tr>
-            </thead>
-            <tbody>
-              {products.map(product => (
-                <tr key={product.id}>
-                  <td>{product.id}</td>
-                  <td>{product.name}</td>
-                  <td>{product.price}</td>
-                  <td>{product.stock}</td>
-                  <td className='d-flex gap-2'>
-                    <img
-                      onClick={() => navigate(`products/${product.id}`)}
-                      className='pointer'
-                      src={editIcon}
-                      alt='Editar producto'
-                    />
-                    <img
-                      onClick={async () => {
-                        if (product?.id) {
-                          openRemoveProductModal(product, () =>
-                            removeProduct(product.id as number)
-                          );
-                        }
-                      }}
-                      className='pointer'
-                      src={removeIcon}
-                      alt='Eliminar producto'
-                    />
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
+          <TableAdmin
+            entities={products}
+            onRemove={(product: Product) => {
+              if (product?.id) {
+                openRemoveProductModal(product, () =>
+                  removeProduct(product.id)
+                );
+              }
+            }}
+            onEdit={(product: Product) => navigate(`products/${product.id}`)}
+          />
         )}
 
         <div className='d-flex justify-content-between mt-4'>
           <Link to='/admin/products/new'>
-            <button
-              onClick={prevPage}
-              type='button'
-              className='btn btn-primary text-white'>
+            <button type='button' className='btn btn-primary text-white'>
               <img
                 style={{ filter: "invert(1)" }}
                 src={addIcon}

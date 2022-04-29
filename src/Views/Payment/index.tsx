@@ -12,8 +12,8 @@ const Payment = () => {
         <strong>
           Antes de ir al formulario de pago, necesito tu informacion para
           realizar el pedido. Luego podras realizar el pago a travez de Mercado
-          Pago. En caso que no manejes mercado pago, contactarme por WhatsApp
-          asi podemos coordinar el pago por otros medios.
+          Pago. En caso que no manejes mercado pago, contactame por WhatsApp asi
+          podemos coordinar el pago por otros medios.
         </strong>
       </p>
       <form onSubmit={sendPay} className='py-4 d-flex flex-column gap-3'>

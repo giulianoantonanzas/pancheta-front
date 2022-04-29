@@ -9,10 +9,10 @@ const useProduct = () => {
   const [paginate, setPaginate] = useState<Paginate>({ pages: 0, total: 0 });
   const [currentPage, setCurrentPage] = useState(1);
   const [filter, setFilter] = useState("");
+  const hasMore = (products && paginate.pages > currentPage) || false;
 
   const featchMore = () => {
-    if (products && paginate.pages > currentPage)
-      setCurrentPage(prev => prev + 1);
+    if (hasMore) setCurrentPage(prev => prev + 1);
   };
 
   const handleChangeFilter = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -46,7 +46,14 @@ const useProduct = () => {
     }
   }, [filter]);
 
-  return { products, featchMore, handleChangeFilter, handleFilter, filter };
+  return {
+    products,
+    featchMore,
+    handleChangeFilter,
+    handleFilter,
+    filter,
+    hasMore
+  };
 };
 
 export default useProduct;

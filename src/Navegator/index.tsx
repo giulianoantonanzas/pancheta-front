@@ -10,6 +10,9 @@ import NewProduct from "../Views/ProductManage";
 import Products from "../Views/Products";
 import Product from "../Views/Product";
 import Payment from "../Views/Payment";
+import InstagramAdmin from "Views/InstagramAdmin";
+import InstagramManage from "Views/InstagramManage";
+import PaymentsAdmin from "Views/PaymentsAdmin";
 
 const Navegator: FC = () => (
   <BrowserRouter>
@@ -29,6 +32,11 @@ const Navegator: FC = () => (
         <Route path='products' element={<ProductAdmin />} />
         <Route path='products/new' element={<NewProduct />} />
         <Route path='products/:id' element={<NewProduct />} />
+
+        <Route path='instagram' element={<InstagramAdmin />} />
+        <Route path='instagram/new' element={<InstagramManage />} />
+
+        <Route path='payments' element={<PaymentsAdmin />} />
       </Route>
     </Routes>
   </BrowserRouter>

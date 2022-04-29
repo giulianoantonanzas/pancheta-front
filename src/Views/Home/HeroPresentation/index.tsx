@@ -13,7 +13,9 @@ const HeroPresentation = () => {
           </h1>
         </div>
         <div className='d-flex flex-column gap-1'>
-          <h4>Muñecos artesanales</h4>
+          <h4>
+            Muñecos artesanales, accesorios,<br></br> juguetes y más
+          </h4>
           <Link to='/productos'>
             <button type='button' className='btn btn-outline-primary'>
               Ver listado

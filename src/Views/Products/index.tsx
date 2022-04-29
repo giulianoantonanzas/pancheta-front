@@ -3,8 +3,14 @@ import useProduct from "./useProducts";
 import Style from "./style.module.scss";
 
 const Products = () => {
-  const { featchMore, products, handleChangeFilter, handleFilter, filter } =
-    useProduct();
+  const {
+    featchMore,
+    products,
+    handleChangeFilter,
+    handleFilter,
+    filter,
+    hasMore
+  } = useProduct();
 
   return (
     <div className='w-100 mt-5 container'>
@@ -34,12 +40,14 @@ const Products = () => {
       </div>
 
       <div className='d-flex justify-content-center align-content-center my-5'>
-        <button
-          onClick={featchMore}
-          type='button'
-          className='btn btn-primary text-white'>
-          Ver Mas
-        </button>
+        {hasMore && (
+          <button
+            onClick={featchMore}
+            type='button'
+            className='btn btn-primary text-white'>
+            Ver Mas
+          </button>
+        )}
       </div>
     </div>
   );

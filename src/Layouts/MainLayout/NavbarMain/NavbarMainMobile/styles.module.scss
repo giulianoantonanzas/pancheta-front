@@ -13,7 +13,6 @@
   justify-content: space-between;
   align-items: center;
   padding: 0px 20px;
-  transition: 0.4s;
   z-index: 8;
 }
 
@@ -25,17 +24,23 @@
   background-color: $backgroundColorWithe;
   height: 100vh;
   box-shadow: 20px 1px 11px -6px rgba(145, 145, 145, 0.4);
-  transition: 0.4s;
+  transition: max-width 0.5s;
   z-index: 22;
   & > div {
-    display: none;
+    margin-top: 1rem;
+    display: flex;
+    gap: 10px;
+    flex-direction: column;
     opacity: 0;
+    transition: opacity 0.2s;
+    height: 200px;
     & img {
       width: 150px;
       height: 30px;
       margin-bottom: 20px;
     }
     & a {
+      white-space: nowrap;
       text-decoration: none;
       color: $lightBrown;
       text-transform: uppercase;
@@ -49,33 +54,10 @@
 
 .activeMenu {
   z-index: 22;
-  max-width: 500px;
-  transition: 0.4s;
   width: fit-content;
-  animation: display 0.4s infinite;
-  transition: 0.8s;
+  max-width: 500px;
   & > div {
-    display: flex;
-    gap: 10px;
-    flex-direction: column;
-    animation: active 2s;
     padding: 1rem;
     opacity: 1;
-  }
-  @keyframes active {
-    0% {
-      opacity: 0;
-    }
-    100% {
-      opacity: 1;
-    }
-  }
-  @keyframes display {
-    0% {
-      max-width: 0 !important;
-    }
-    100% {
-      max-width: 500px !important;
-    }
   }
 }

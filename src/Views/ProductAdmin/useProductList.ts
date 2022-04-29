@@ -42,7 +42,7 @@ const useProductList = () => {
       data: Product[];
       total: number;
       pages: number;
-    }>("/products", `?page=${currentPage}&filter=${filter}`);
+    }>("/products/admin", `?page=${currentPage}&filter=${filter}`);
     if (response && response?.data?.length > 0) {
       setPaginate({ total: response.total, pages: response.pages });
       setProducts(response.data);

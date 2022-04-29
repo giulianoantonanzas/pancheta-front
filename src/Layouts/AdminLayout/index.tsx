@@ -7,10 +7,12 @@ const AdminLayout = () => {
   const { user } = useUser();
   if (user?.token) {
     return (
-      <div className={`${Styles.layOutDisplay}`}>
+      <>
         <NavbarAdmin />
-        <Outlet />
-      </div>
+        <div className={`${Styles.layOutDisplay}`}>
+          <Outlet />
+        </div>
+      </>
     );
   } else {
     return <Navigate to='/login' />;

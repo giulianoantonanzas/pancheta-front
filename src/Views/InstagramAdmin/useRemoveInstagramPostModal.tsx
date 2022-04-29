@@ -1,19 +1,19 @@
 import { useCallback } from "react";
 import usePromptContext from "Context/PromptContext/usePromptContext";
-import { Product } from "types/Product";
+import { InstagramPostType } from "types/InstagramPost";
 import ModalRemoveItem from "Components/ModalRemoveItem";
 
-const useRemoveProductModal = () => {
+const useRemoveInstagramPostModal = () => {
   const prompt = usePromptContext();
 
-  const openRemoveProductModal = useCallback(
-    async (product: Product, onAccept: () => void) => {
+  const openRemoveInstagramPostModal = useCallback(
+    async (instagramPost: InstagramPostType, onAccept: () => void) => {
       await prompt<React.FC>(({ onClose }) => {
         return (
           <ModalRemoveItem
             onAccept={onAccept}
             onClose={onClose}
-            textTitle={`¿Estas seguro que quiere eliminar el Producto; ${product.name}`}
+            textTitle={`¿Estas seguro que quiere eliminar la publicación ${instagramPost.url}?`}
           />
         );
       });
@@ -21,7 +21,7 @@ const useRemoveProductModal = () => {
     []
   );
 
-  return { openRemoveProductModal };
+  return { openRemoveInstagramPostModal };
 };
 
-export default useRemoveProductModal;
+export default useRemoveInstagramPostModal;

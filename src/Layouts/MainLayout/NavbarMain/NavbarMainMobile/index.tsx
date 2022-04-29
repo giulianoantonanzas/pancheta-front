@@ -7,9 +7,16 @@ import PanchetaLogo from "assets/images/Pancheta logo texto.png";
 
 const NavbarMainMobile = () => {
   const [openMenu, setOpenMenu] = useState(false);
+  const [dnone, setDnone] = useState(true);
 
   const handleSwitchOpenMenu = () => {
-    setOpenMenu(prev => !prev);
+    if (dnone) {
+      setDnone(prev => !prev);
+      setTimeout(() => setOpenMenu(prev => !prev), 200);
+    } else {
+      setTimeout(() => setDnone(prev => !prev), 300);
+      setOpenMenu(prev => !prev);
+    }
   };
 
   return (
@@ -19,15 +26,17 @@ const NavbarMainMobile = () => {
         <Cart />
       </nav>
       <div
-        className={`${Style.navbarLeft} ${openMenu ? Style.activeMenu : ""}`}>
+        className={`${Style.navbarLeft} ${openMenu ? Style.activeMenu : ""} ${
+          dnone ? "d-none" : ""
+        }`}>
         <div>
-          <Link onClick={() => setOpenMenu(false)} to='/'>
+          <Link onClick={handleSwitchOpenMenu} to='/'>
             <img src={PanchetaLogo} />
           </Link>
-          <Link onClick={() => setOpenMenu(false)} to='/productos'>
+          <Link onClick={handleSwitchOpenMenu} to='/productos'>
             Productos
           </Link>
-          <Link onClick={() => setOpenMenu(false)} to='/sobre-mi'>
+          <Link onClick={handleSwitchOpenMenu} to='/sobre-mi'>
             Acerca de Pancheta
           </Link>
         </div>
